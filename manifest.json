@@ -1,0 +1,25 @@
+{
+  "name": "Ticket Shop Reloader",
+  "version": "1",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "reload-until@mozilla.org",
+      "strict_min_version": "121.0a1"
+    },
+    "gecko_android": {
+      "strict_min_version": "121.0a1"
+    },
+    "data_collection_permissions": {
+      "required": ["none"]
+    }
+  },
+  "minimum_chrome_version": "121",
+  "content_scripts": [
+    {
+      "matches": ["*://*.events.ccc.de/*"],
+      "js": ["reload.js"]
+    }
+  ]
+}
