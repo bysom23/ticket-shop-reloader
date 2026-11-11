@@ -18,7 +18,7 @@
   "minimum_chrome_version": "121",
   "content_scripts": [
     {
-      "matches": ["*://*.events.ccc.de/*"],
+      "matches": ["*://tickets.events.ccc.de/*"],
       "js": ["reload.js"]
     }
   ]
