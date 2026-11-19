@@ -19,7 +19,7 @@ function printLine() {
 function reload() {
     printLine();
 
-    sleep(50).then(() => {
+    sleep(10).then(() => {
         console.log("Search for " + stringToDisappear);
         
         var content = document.body.textContent || document.body.innerText;
