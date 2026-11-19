@@ -1,5 +1,5 @@
 // Diesen Text anpassen auf einen, der auf der Warteseite steht, aber danach nicht
-const stringToDisappear = "20:00"
+const stringToDisappear = "Please be back here on time at"
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -19,7 +19,7 @@ function printLine() {
 function reload() {
     printLine();
 
-    sleep(20).then(() => {
+    sleep(50).then(() => {
         console.log("Search for " + stringToDisappear);
         
         var content = document.body.textContent || document.body.innerText;
@@ -34,14 +34,21 @@ function reload() {
     });
 }
 
-
+console.log("Actual state: " + document.readyState);
 
 if (document.readyState == "complete") {
     console.log("already fully laded");
     
     reload();
 } else {
-    document.addEventListener("DOMContentLoaded", (event) => {
-        reload();
-    });
+    console.log("Waiting...");
+
+    document.onreadystatechange = function () {
+        console.log(''+(+new Date)+': Ready state changed'); 
+        if (document.readyState == "complete") { 
+            console.log(''+(+new Date)+': Ready = Complete'); 
+
+            reload();
+        }   
+    };
 }
